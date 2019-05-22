@@ -15,6 +15,8 @@ class Comment(Content):
     mandatory_properties = ('author', 'date')
     default_template = 'None'
 
+    allowed_statuses = ('published'),
+    default_status = 'published'
     article = None
 
     def __init__(self, content, metadata, settings, source_path, context):
