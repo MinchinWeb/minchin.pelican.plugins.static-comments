@@ -23,7 +23,7 @@ from . comment import Comment
 from . import avatars
 
 
-__version__ = "1.4.0"
+__version__ = "2.0.0+dev.1"
 
 
 _all_comments = []

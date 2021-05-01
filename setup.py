@@ -10,7 +10,7 @@ except ImportError:
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
 
-def get_version(filename="pelican_comment_system/__init__.py"):
+def get_version(filename="pelican/plugins/comment_system/__init__.py"):
     with open(os.path.join(base_dir, filename), encoding="utf-8") as initfile:
         for line in initfile.readlines():
             m = re.match("__version__ *= *['\"](.*)['\"]", line)
@@ -36,8 +36,8 @@ setup(
     author="Bernhard Scheirle",
     author_email="bernhard+python@scheirle.de",
     url=base_url,
-    packages=['pelican_comment_system',
-              'pelican_comment_system.identicon'],
+    packages=['pelican.plugins.comment_system',
+              'pelican.plugins.comment_system.identicon'],
     include_package_data=True,
     install_requires=[
         'pelican>=3.4',
@@ -54,7 +54,7 @@ setup(
         # 'Programming Language :: Python :: 3.4',
         # 'Programming Language :: Python :: 3.5',
         # 'Programming Language :: Python :: 3.6',
-        'Framework :: Pelican :: Plugins`,
+        'Framework :: Pelican :: Plugins',
         'Topic :: Software Development :: Libraries :: Python Modules',
         ],
 )
