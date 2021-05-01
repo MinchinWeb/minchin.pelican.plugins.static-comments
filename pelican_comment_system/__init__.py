@@ -86,7 +86,12 @@ def initialize(article_generator):
     # Reset old states (autoreload mode)
     global _all_comments
     global _pelican_writer
-    _pelican_writer = _pelican_obj.get_writer()
+    try:
+        # Pelican 4.5.2 and newer
+        # see https://github.com/getpelican/pelican/commit/afdf0fb3cf6cd376a6f241e2d5bbf99cf0e348c2
+        _pelican_writer = _pelican_obj._get_writer()
+    except AttributeError:
+        _pelican_writer = _pelican_obj.get_writer()
     _all_comments = []
 
 
