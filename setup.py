@@ -21,7 +21,7 @@ def get_version(filename="pelican/plugins/comment_system/__init__.py"):
 def get_long_description(absolute_url):
     readme = open(os.path.join(base_dir, "README.rst")).read()
     # Fix relative links
-    readme = readme.replace("<doc/", "<" + absolute_url + "/doc/")
+    readme = readme.replace("<docs/", "<" + absolute_url + "/doc/")
     readme = readme.replace("<./", "<" + absolute_url + "/")
     # TODO: remove change log section from readme
     return "\n\n".join([readme, open(os.path.join(base_dir, "CHANGELOG.rst")).read()])
