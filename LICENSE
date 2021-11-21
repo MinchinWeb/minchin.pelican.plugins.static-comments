@@ -1,7 +1,9 @@
 pelican_comment_system
 ----------------------
 
-Copyright 2014 Bernhard Scheirle. All rights reserved.
+Copyright 2014-17 Bernhard Scheirle.
+Copyright 2017, 2021 William Minchin.
+All rights reserved.
 
 pelican_comment_system is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,7 +24,7 @@ See COPYING for a copy of the GNU General Public License.
 identicon.py
 ------------
 
-identicon.py is Licesensed under FreeBSD License.
+identicon.py is Licensed under FreeBSD License.
 (http://www.freebsd.org/copyright/freebsd-license.html)
 
 Copyright 1994-2009 Shin Adachi. All rights reserved.

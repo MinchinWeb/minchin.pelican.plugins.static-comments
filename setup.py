@@ -27,9 +27,9 @@ def get_long_description(absolute_url):
     return "\n\n".join([readme, open(os.path.join(base_dir, "CHANGELOG.rst")).read()])
 
 
-base_url = "https://github.com/Scheirle/pelican_comment_system"
+base_url = "https://github.com/MinchinWeb/minchin.pelican.plugins.static-comments"
 setup(
-    name="pelican_comment_system",
+    name="minchin.pelican.plugins.static-comments",
     version=get_version(),
     description="Allows you to add static comments to your articles on your Pelican blog.",
     long_description=get_long_description(base_url + "/tree/v" + get_version()),

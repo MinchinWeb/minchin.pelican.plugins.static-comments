@@ -1,12 +1,13 @@
-Pelican Comment System
-======================
+Pelican Static Comment System
+=============================
 
-Pelican Comment System allows you to add static comments to your
-articles.
+Pelican Static Comment System allows you to add static comments to your
+articles. 
 
-Comments are stored in files in formats that can be processed by Pelican
-(e.g., Markdown, reStructuredText). Each comment resides in its own
-file.
+Comments are received via email (i.e. you don't need to maintain a server to
+receive comments). Comments are stored in files in formats that can be
+processed by Pelican (e.g., Markdown, reStructuredText). Each comment resides
+in its own file.
 
 Features
 --------
@@ -15,17 +16,19 @@ Features
 -  Replies to comments
 -  Avatars and `Identicons <https://en.wikipedia.org/wiki/Identicon>`__
 -  Comment Atom feed for each article
--  Easy styleable via themes
--  Python 2 and 3 support
+-  Easily style-able via themes
+-  Python 3 support
 
 See it in action here:
 `bernhard.scheirle.de <http://bernhard.scheirle.de/posts/2014/March/29/static-comments-via-email/>`__
 
-+---------------------+-------------------------------+-------------------------------+
-| Author              | Website                       | Github                        |
-+=====================+===============================+===============================+
-| Bernhard Scheirle   | http://bernhard.scheirle.de   | https://github.com/Scheirle   |
-+---------------------+-------------------------------+-------------------------------+
++-------------------+-----------------------------+-----------------------------------------------+
+| Author            | Website                     | Github                                        |
++===================+=============================+===============================================+
+| Bernhard Scheirle | http://bernhard.scheirle.de | https://github.com/Scheirle                   |
++-------------------+-----------------------------+-----------------------------------------------+
+| William Minchin   | https://blog.minchin.ca     | https://github.com/MinchinWeb/blog.minchin.ca |
++-------------------+-----------------------------+-----------------------------------------------+
 
 Instructions
 ------------
@@ -43,7 +46,7 @@ The Pelican Comment System is now also in the Python Package Index and can easil
 
 ::
 
-    pip install pelican_comment_system
+    pip install minchin.pelican.plugins.static-comments
 
 
 Requirements

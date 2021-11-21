@@ -4,6 +4,22 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`__.
 
+2.0.0 - 2021-11-xx
+------------------
+\
+
+Changes
+~~~~~~~
+
+- move GitHub repo to `MinchinWeb/minchin.pelican.plugins.static-comments
+  https://github.com/MinchinWeb/minchin.pelican.plugins.static-comments`
+- 
+
+Unresolved
+~~~~~~~~~~
+
+- .
+
 1.4.0 – 2017-02-20
 ------------------
 \
