@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Pelican Comment System
+Pelican Static Comment System
 ======================
 
-A Pelican plugin, which allows you to add comments to your articles.
+A Pelican plugin, which allows you to add static comments to your articles.
 
 Author: Bernhard Scheirle
+Maintainer: William Minchin
 """
 from __future__ import unicode_literals
 import logging
