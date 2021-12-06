@@ -2,13 +2,13 @@
 """
 Export Comments from BLogger XML
 
-Takes in a Blogger export XML file and spits out each comment in a seperate
+Takes in a Blogger export XML file and spits out each comment in a separate
 file, such that can be used with the [Pelican Comment System]
 (https://bernhard.scheirle.de/posts/2014/March/29/static-comments-via-email/).
 
 May be simple to extend to export posts as well.
 
-For a more detailed desciption, read my blog post at
+For a more detailed description, read my blog post at
     http://blog.minchin.ca/2016/12/blogger-comments-exported.html
 
 Author: Wm. Minchin -- minchinweb@gmail.com
