@@ -20,7 +20,7 @@ from pelican import signals
 from pelican.readers import Readers
 from pelican.writers import Writer
 
-from . comment import Comment
+from .comment import Comment
 from . import avatars
 
 
@@ -34,6 +34,7 @@ _pelican_obj = None
 
 def setdefault(pelican, settings):
     from pelican.settings import DEFAULT_CONFIG
+
     for key, value in settings:
         DEFAULT_CONFIG.setdefault(key, value)
 
@@ -46,28 +47,34 @@ def setdefault(pelican, settings):
 
 def pelican_initialized(pelican):
     from pelican.settings import DEFAULT_CONFIG
+
     settings = [
-        ('PELICAN_COMMENT_SYSTEM', False),
-        ('PELICAN_COMMENT_SYSTEM_DIR', 'comments'),
-        ('PELICAN_COMMENT_SYSTEM_IDENTICON_OUTPUT_PATH', 'images/identicon'),
-        ('PELICAN_COMMENT_SYSTEM_IDENTICON_DATA', ()),
-        ('PELICAN_COMMENT_SYSTEM_IDENTICON_SIZE', 72),
-        ('PELICAN_COMMENT_SYSTEM_AUTHORS', {}),
-        ('PELICAN_COMMENT_SYSTEM_FEED', os.path.join('feeds', 'comment.%s.atom.xml')),
-        ('PELICAN_COMMENT_SYSTEM_FEED_ALL', os.path.join('feeds', 'comments.all.atom.xml')),
-        ('COMMENT_URL', '#comment-{slug}')
+        ("PELICAN_COMMENT_SYSTEM", False),
+        ("PELICAN_COMMENT_SYSTEM_DIR", "comments"),
+        ("PELICAN_COMMENT_SYSTEM_IDENTICON_OUTPUT_PATH", "images/identicon"),
+        ("PELICAN_COMMENT_SYSTEM_IDENTICON_DATA", ()),
+        ("PELICAN_COMMENT_SYSTEM_IDENTICON_SIZE", 72),
+        ("PELICAN_COMMENT_SYSTEM_AUTHORS", {}),
+        ("PELICAN_COMMENT_SYSTEM_FEED", os.path.join("feeds", "comment.%s.atom.xml")),
+        (
+            "PELICAN_COMMENT_SYSTEM_FEED_ALL",
+            os.path.join("feeds", "comments.all.atom.xml"),
+        ),
+        ("COMMENT_URL", "#comment-{slug}"),
     ]
 
     setdefault(pelican, settings)
 
-    DEFAULT_CONFIG['PAGE_EXCLUDES'].append(
-        DEFAULT_CONFIG['PELICAN_COMMENT_SYSTEM_DIR'])
-    DEFAULT_CONFIG['ARTICLE_EXCLUDES'].append(
-        DEFAULT_CONFIG['PELICAN_COMMENT_SYSTEM_DIR'])
-    pelican.settings['PAGE_EXCLUDES'].append(
-        pelican.settings['PELICAN_COMMENT_SYSTEM_DIR'])
-    pelican.settings['ARTICLE_EXCLUDES'].append(
-        pelican.settings['PELICAN_COMMENT_SYSTEM_DIR'])
+    DEFAULT_CONFIG["PAGE_EXCLUDES"].append(DEFAULT_CONFIG["PELICAN_COMMENT_SYSTEM_DIR"])
+    DEFAULT_CONFIG["ARTICLE_EXCLUDES"].append(
+        DEFAULT_CONFIG["PELICAN_COMMENT_SYSTEM_DIR"]
+    )
+    pelican.settings["PAGE_EXCLUDES"].append(
+        pelican.settings["PELICAN_COMMENT_SYSTEM_DIR"]
+    )
+    pelican.settings["ARTICLE_EXCLUDES"].append(
+        pelican.settings["PELICAN_COMMENT_SYSTEM_DIR"]
+    )
 
     global _pelican_obj
     _pelican_obj = pelican
@@ -75,13 +82,11 @@ def pelican_initialized(pelican):
 
 def initialize(article_generator):
     avatars.init(
-        article_generator.settings['OUTPUT_PATH'],
-        article_generator.settings[
-            'PELICAN_COMMENT_SYSTEM_IDENTICON_OUTPUT_PATH'],
-        article_generator.settings['PELICAN_COMMENT_SYSTEM_IDENTICON_DATA'],
-        article_generator.settings[
-            'PELICAN_COMMENT_SYSTEM_IDENTICON_SIZE'] / 3,
-        article_generator.settings['PELICAN_COMMENT_SYSTEM_AUTHORS'],
+        article_generator.settings["OUTPUT_PATH"],
+        article_generator.settings["PELICAN_COMMENT_SYSTEM_IDENTICON_OUTPUT_PATH"],
+        article_generator.settings["PELICAN_COMMENT_SYSTEM_IDENTICON_DATA"],
+        article_generator.settings["PELICAN_COMMENT_SYSTEM_IDENTICON_SIZE"] / 3,
+        article_generator.settings["PELICAN_COMMENT_SYSTEM_AUTHORS"],
     )
 
     # Reset old states (autoreload mode)
@@ -107,22 +112,21 @@ def warn_on_slug_collision(items):
     for slug, itemList in slugs.items():
         len_ = len(itemList)
         if len_ > 1:
-            logger.warning('There are %s comments with the same slug: %s',
-                           len_, slug)
+            logger.warning("There are %s comments with the same slug: %s", len_, slug)
             for x in itemList:
-                logger.warning('    %s', x.source_path)
+                logger.warning("    %s", x.source_path)
 
 
 def write_feed_all(gen, writer):
-    if gen.settings['PELICAN_COMMENT_SYSTEM'] is not True:
+    if gen.settings["PELICAN_COMMENT_SYSTEM"] is not True:
         return
-    if gen.settings['PELICAN_COMMENT_SYSTEM_FEED_ALL'] is None:
+    if gen.settings["PELICAN_COMMENT_SYSTEM_FEED_ALL"] is None:
         return
 
     context = copy.copy(gen.context)
-    context['SITENAME'] += " - All Comments"
-    context['SITESUBTITLE'] = ""
-    path = gen.settings['PELICAN_COMMENT_SYSTEM_FEED_ALL']
+    context["SITENAME"] += " - All Comments"
+    context["SITESUBTITLE"] = ""
+    path = gen.settings["PELICAN_COMMENT_SYSTEM_FEED_ALL"]
 
     global _all_comments
     _all_comments = sorted(_all_comments)
@@ -136,10 +140,10 @@ def write_feed_all(gen, writer):
 
 
 def write_feed(gen, items, context, slug):
-    if gen.settings['PELICAN_COMMENT_SYSTEM_FEED'] is None:
+    if gen.settings["PELICAN_COMMENT_SYSTEM_FEED"] is None:
         return
 
-    path = gen.settings['PELICAN_COMMENT_SYSTEM_FEED'] % slug
+    path = gen.settings["PELICAN_COMMENT_SYSTEM_FEED"] % slug
     _pelican_writer.write_feed(items, context, path)
 
 
@@ -155,7 +159,7 @@ def mirror_to_translations(article):
 
 
 def add_static_comments(gen, content):
-    if gen.settings['PELICAN_COMMENT_SYSTEM'] is not True:
+    if gen.settings["PELICAN_COMMENT_SYSTEM"] is not True:
         return
 
     global _all_comments
@@ -166,14 +170,12 @@ def add_static_comments(gen, content):
 
     # Modify the local context, so we get proper values for the feed
     context = copy.copy(gen.context)
-    context['SITEURL'] += "/" + content.url
-    context['SITENAME'] += " - Comments: " + content.title
-    context['SITESUBTITLE'] = ""
+    context["SITEURL"] += "/" + content.url
+    context["SITENAME"] += " - Comments: " + content.title
+    context["SITESUBTITLE"] = ""
 
     folder = os.path.join(
-        gen.settings['PATH'],
-        gen.settings['PELICAN_COMMENT_SYSTEM_DIR'],
-        content.slug
+        gen.settings["PATH"], gen.settings["PELICAN_COMMENT_SYSTEM_DIR"], content.slug
     )
 
     if not os.path.isdir(folder):
@@ -189,13 +191,13 @@ def add_static_comments(gen, content):
         name, extension = os.path.splitext(file)
         if extension[1:].lower() in reader.extensions:
             com = reader.read_file(
-                base_path=folder, path=file,
-                content_class=Comment, context=context)
+                base_path=folder, path=file, content_class=Comment, context=context
+            )
 
             com.article = content
             _all_comments.append(com)
 
-            if hasattr(com, 'replyto'):
+            if hasattr(com, "replyto"):
                 replies.append(com)
             else:
                 comments.append(com)
@@ -215,10 +217,14 @@ def add_static_comments(gen, content):
                 found_parent = True
                 break
         if not found_parent:
-            logger.warning('Comment "%s/%s" is a reply to non-existent '
-                           'comment "%s". Make sure the replyto attribute is '
-                           'set correctly.',
-                           content.slug, reply.slug, reply.replyto)
+            logger.warning(
+                'Comment "%s/%s" is a reply to non-existent '
+                'comment "%s". Make sure the replyto attribute is '
+                "set correctly.",
+                content.slug,
+                reply.slug,
+                reply.replyto,
+            )
 
     count = 0
     for comment in comments:
@@ -237,10 +243,10 @@ def writeIdenticonsToDisk(gen, writer):
 
 
 def pelican_finalized(pelican):
-    if pelican.settings['PELICAN_COMMENT_SYSTEM'] is not True:
+    if pelican.settings["PELICAN_COMMENT_SYSTEM"] is not True:
         return
     global _all_comments
-    print('Processed %s comment(s)' % len(_all_comments))
+    print("Processed %s comment(s)" % len(_all_comments))
 
 
 def register():
