@@ -30,7 +30,7 @@ def find_meta(*meta_file_parts, meta_key):
 ##############################################################################
 #                          PACKAGE METADATA                                  #
 ##############################################################################
-META_PATH = ['minchin', 'pelican', 'plugins', 'static-comments', '__init__.py']
+META_PATH = ['minchin', 'pelican', 'plugins', 'static_comments', '__init__.py']
 
 NAME         = find_meta(*META_PATH, meta_key='title').lower()
 VERSION      = find_meta(*META_PATH, meta_key='version')
@@ -133,7 +133,12 @@ setuptools.setup(
     extras_require=EXTRA_REQUIRES,
     platforms='any',
     classifiers=CLASSIFIERS,
-    namespace_packages=['minchin', ],
+    # namespace_packages=[
+    #     "minchin",
+    #     "minchin.pelican",
+    #     "minchin.pelican.plugins",
+    #     "minchin.pelican.plugins.static_comments",
+    # ],
     console_scripts={
         'blogger-comment-export': 'minchin.pelican.plugins.static_comments:main [blogger]'
     }
