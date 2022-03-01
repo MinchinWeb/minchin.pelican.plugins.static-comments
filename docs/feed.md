@@ -12,11 +12,11 @@ COMMENT_URL = "#my_own_comment_id_{slug}"
 
 ##### Theme
 
-```html
+```jinja2
 {% for comment in article.comments recursive %}
-	...
-	<article id="my_own_comment_id_{{comment.slug}}">{{ comment.content }}</article>
-	...
+    {# ... #}
+    article id="my_own_comment_id_{{comment.slug}}">{{ comment.content }}</article>
+    {# ... #}
 {% endfor %}
 ```
 
@@ -26,14 +26,14 @@ COMMENT_URL = "#my_own_comment_id_{slug}"
 
 To display a link to the article feed simply add the following to your theme:
 
-```html
+```jinja
 {% if article %}
-	<a href="{{ FEED_DOMAIN }}/{{ PELICAN_COMMENT_SYSTEM_FEED|format(article.slug) }}">Comment Atom Feed</a>
+    <a href="{{ FEED_DOMAIN }}/{{ PELICAN_COMMENT_SYSTEM_FEED|format(article.slug) }}">Comment Atom Feed</a>
 {% endif %}
 ```
 
 Link to the all comment feed:
 
-```html
+```jinja
 <a href="{{ FEED_DOMAIN }}/{{ PELICAN_COMMENT_SYSTEM_FEED_ALL }}">Comment All Atom Feed</a>
 ```

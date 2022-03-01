@@ -55,9 +55,10 @@ Requirements
 Pelican 3.4 or newer is required.
 
 To create identicons, the Python Image Library is needed. Therefore you
-either need PIL **or** Pillow (recommended).
+either need PIL **or** Pillow (recommended). If you install the plugin from
+pip, Pillow will automatically be installed.
 
-**Install Pillow via:**
+**Install Pillow manually via:**
 
 ::
 

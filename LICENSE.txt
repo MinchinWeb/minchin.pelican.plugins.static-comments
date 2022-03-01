@@ -2,7 +2,7 @@ pelican_comment_system
 ----------------------
 
 Copyright 2014-17 Bernhard Scheirle.
-Copyright 2017, 2021 William Minchin.
+Copyright 2017, 2021-22 William Minchin.
 All rights reserved.
 
 pelican_comment_system is free software: you can redistribute it and/or modify

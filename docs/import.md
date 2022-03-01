@@ -4,18 +4,19 @@
 
 When moving to Pelican and the Pelican Comment System, it may be desirable to move over your comments as well.
 
-The scripts to support this are found in the `import` directory.
+The scripts to support this are found in the `import` sub-directory of the plugin.
 
 ## Blogger
 
-Blogger is good in that it will give you an export of everything, but the bad news is it's one giant XML file. XML is great if you're a computer, but a bit of a pain if you're a human. 
+Blogger is good in that it will give you an export of everything, but the bad news is it's one giant XML file. XML is great if you're a computer, but a bit of a pain if you're a human.
 
-The code I used to export my comments from Blogger is found at [blogger_comment_export.py](../import/blogger_comment_export.py).
+The code I used to export my comments from Blogger is found at [blogger_comment_export.py](..minchin/pelican/plugins/static_comments/import/blogger_comment_export.py).
 
 To use it
-yourself, you will need to first adjust the constants at the beginning of the 
-script (lines 26-33) to point to your Blogger XML export and where you want
-the comments to be exported to. You will also need to install `untangle`
+yourself, you will need to first adjust the constants at the beginning of the
+script (lines 26-33) to point to your Blogger XML export (default is at `C:\tmp\blog.xml`) and where you want
+the comments to be exported to (default is a `comments` sub-directory of the
+current working folder). You will also need to install `untangle`
 (available through pip -- `pip install untangle`).
 
 Comments will be exported into folders matching

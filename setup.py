@@ -48,7 +48,14 @@ AUTHOR       = find_meta(*META_PATH, meta_key='author')
 AUTHOR_EMAIL = find_meta(*META_PATH, meta_key='email')
 LICENSE      = find_meta(*META_PATH, meta_key='license')
 
+# PACKAGES     = setuptools.find_packages(exclude="vendor_src")
+# PACKAGES     = setuptools.find_namespace_packages()
 PACKAGES     = setuptools.find_namespace_packages(include=['minchin.*'])
+# PACKAGES     = setuptools.find_namespace_packages(include=['minchin.pelican.plugins.*'])
+# PACKAGES     = [
+#     'minchin.pelican.plugins.static_comments',
+#     'minchin.pelican.plugins.static_comments.identicons',
+# ]
 
 INSTALL_REQUIRES = [
     'minchin.pelican.plugins.autoloader',
@@ -141,7 +148,7 @@ setuptools.setup(
     # ],
     entry_points={
         'console_scripts': {
-            ('blogger-comment-export=minchin.pelican.plugins.static_comments.blogger_comment_export:main', ),
+            ('blogger-comment-export=minchin.pelican.plugins.static_comments.import.blogger_comment_export:main', ),
         },
     },
 )

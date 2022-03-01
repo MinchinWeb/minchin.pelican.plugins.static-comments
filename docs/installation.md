@@ -1,12 +1,35 @@
 # Installation
 
+If you are using Pelican 4.5+, the plugin will automatally be loaded (although
+not activated).
+
+If you are an earlier version of Pelican, or non-namespace plugins, you will
+need to add the auto-loader to your list of plugins:
+
+
+```python
+# pelicanconf.py
+
+PLUGINS = [
+	  # others
+		"minchin.pelican.plugins.autoloader",
+]
+```
+
 Activate the plugin by adding it to your `pelicanconf.py`: (See also [How to use plugins](https://github.com/getpelican/pelican-plugins/tree/master/#how-to-use-plugins))
 
-	PELICAN_COMMENT_SYSTEM = True
+```python
+# pelicanconf.py
+
+PELICAN_COMMENT_SYSTEM = True
+```
 
 Then, modify your `article.html` theme as follows below.
 
 ## Settings
+
+Add these as additional lines to your `pelicanconf.py` to use a value other
+than the default.
 
 Name                                           | Type      | Default                      | Description
 -----------------------------------------------|-----------|------------------------------|-------
@@ -32,16 +55,17 @@ The filenames of the comment files are up to you. But the filename is the identi
 
 ##### Example folder structure
 
-	.
-	└── comments
-		└── foo-bar
-		│   ├── 1.md
-		│   └── 0.md
-		└── some-other-slug
-			├── random-Name.md
-			├── 1.md
-			└── 0.md
-
+```
+.
+└── comments
+  └── foo-bar
+  │   ├── 1.md
+  │   └── 0.md
+  └── some-other-slug
+    ├── random-Name.md
+    ├── 1.md
+    └── 0.md
+```
 
 ## Comment file
 
@@ -58,13 +82,16 @@ Every other (custom) tag gets parsed as well and will be available through the t
 
 ##### Example of a comment file
 
-	date: 2014-3-21 15:02
-	author: Author of the comment
-	website: http://authors.website.com
-	replyto: 1md
-	anothermetatag: some random tag
 
-	Content of the comment.
+```markdown
+date: 2014-3-21 15:02
+author: Author of the comment
+website: http://authors.website.com
+replyto: 1md
+anothermetatag: some random tag
+
+Content of the comment.
+```
 
 ## Theme
 
@@ -90,28 +117,29 @@ Attribute  | Description
 
 (only the comment section is shown here)
 
-```html
+```jinja
 {% if article.comments %}
-	{% for comment in article.comments recursive %}
-		{% if loop.depth0 == 0 %}
-			{% set marginLeft = 0 %}
-		{% else %}
-			{% set marginLeft = 50 %}
-		{% endif %}
-			<article id="comment-{{comment.slug}}" style="border: 1px solid #DDDDDD; padding: 5px 0px 0px 5px; margin: 0px -1px 5px {{marginLeft}}px;">
-				<a href="{{ SITEURL }}/{{ article.url }}#comment-{{comment.slug}}" rel="bookmark" title="Permalink to this comment">Permalink</a>
-				<h4>{{ comment.author }}</h4>
-				<p>Posted on <abbr class="published" title="{{ comment.date.isoformat() }}">{{ comment.locale_date }}</abbr></p>
-				{{ comment.metadata['my_custom_metadata'] }}
-				{{ comment.content }}
-				{% if comment.replies %}
-					{{ loop(comment.replies) }}
-				{% endif %}
-			</article>
-	{% endfor %}
+    {% for comment in article.comments recursive %}
+        {% if loop.depth0 == 0 %}
+            {% set marginLeft = 0 %}
+        {% else %}
+            {% set marginLeft = 50 %}
+        {% endif %}
+            <article id="comment-{{comment.slug}}" style="border: 1px solid #DDDDDD; padding: 5px 0px 0px 5px; margin: 0px -1px 5px {{marginLeft}}px;">
+                <a href="{{ SITEURL }}/{{ article.url }}#comment-{{comment.slug}}" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>{{ comment.author }}</h4>
+                <p>Posted on <abbr class="published" title="{{ comment.date.isoformat() }}">{{ comment.locale_date }}</abbr></p>
+                {{ comment.metadata['my_custom_metadata'] }}
+                {{ comment.content }}
+                {% if comment.replies %}
+                    {{ loop(comment.replies) }}
+                {% endif %}
+            </article>
+    {% endfor %}
 {% else %}
-	<p>There are no comments yet.<p>
+    <p>There are no comments yet.<p>
 {% endif %}
 ```
 
-For a more complex / extensive example have a look at [theme/templates/pcs/comments.html](../theme/templates/pcs/comments.html)
+For a more complex / extensive example have a look at
+[theme/templates/pcs/comments.html](../theme/templates/pcs/comments.html)

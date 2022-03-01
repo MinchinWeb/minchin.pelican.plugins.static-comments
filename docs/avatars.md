@@ -8,7 +8,7 @@ To activate the avatars and [identicons](https://en.wikipedia.org/wiki/Identicon
 PELICAN_COMMENT_SYSTEM_IDENTICON_DATA = ('author',)
 ```
 
-Now every comment with the same author tag will be treated as if written from the same person. And therefore have the same avatar/identicon. Of cause you can modify this tuple so other metadata are checked.
+Now every comment with the same author tag will be treated as if written from the same person. And therefore have the same avatar/identicon. Of cause you can modify this tuple so other metadata is checked.
 
 ## Specific Avatars
 
@@ -35,7 +35,8 @@ To display the avatars and identicons simply add the following in the "comment f
 <img src="{{ SITEURL }}/{{ comment.avatar }}"
     alt="Avatar"
     height="{{ PELICAN_COMMENT_SYSTEM_IDENTICON_SIZE }}"
-    width="{{ PELICAN_COMMENT_SYSTEM_IDENTICON_SIZE }}">
+    width="{{ PELICAN_COMMENT_SYSTEM_IDENTICON_SIZE }}"
+/>
 ```
 
-Of cause the `height` and `width` are optional, but they make sure that everything has the same size (in particular  specific avatars).
+Of course, the `height` and `width` are optional but they make sure that everything has the same size (in particular  specific avatars).
