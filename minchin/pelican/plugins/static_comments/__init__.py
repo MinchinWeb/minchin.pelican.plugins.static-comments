@@ -9,20 +9,21 @@ Author: Bernhard Scheirle
 Maintainer: William Minchin
 """
 from __future__ import unicode_literals
+
+import copy
 import logging
 import os
-import copy
 
 logger = logging.getLogger(__name__)
 
 from itertools import chain
+
 from pelican import signals
 from pelican.readers import Readers
 from pelican.writers import Writer
 
-from .comment import Comment
 from . import avatars
-
+from .comment import Comment
 
 # fmt: off
 __version__ = "2.0.0+dev.1"

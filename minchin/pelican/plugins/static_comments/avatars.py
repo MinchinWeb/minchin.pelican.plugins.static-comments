@@ -5,16 +5,14 @@ Author: Bernhard Scheirle
 
 from __future__ import unicode_literals
 
+import hashlib
 import logging
 import os
-
-import hashlib
-
 
 logger = logging.getLogger(__name__)
 _log = "pelican_comment_system: avatars: "
 try:
-    from . identicon import identicon
+    from .identicon import identicon
     _identiconImported = True
 except ImportError as e:
     logger.warning(_log + "identicon deactivated: " + str(e))

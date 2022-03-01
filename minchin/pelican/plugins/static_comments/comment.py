@@ -3,6 +3,7 @@
 Author: Bernhard Scheirle
 """
 from __future__ import unicode_literals
+
 import os
 
 from pelican.contents import Content

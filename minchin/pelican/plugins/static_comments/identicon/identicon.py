@@ -19,8 +19,7 @@ Return a PIL Image class instance which have generated identicon image.
 """
 # g
 # PIL Modules
-from PIL import Image, ImageDraw, ImagePath, ImageColor
-
+from PIL import Image, ImageColor, ImageDraw, ImagePath
 
 __all__ = ['render_identicon', 'IdenticonRendererBase']
 
