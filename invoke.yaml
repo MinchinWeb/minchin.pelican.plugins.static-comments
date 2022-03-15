@@ -1,0 +1,12 @@
+releaser:
+  module_name: minchin.pelican.plugins.static_comments
+  here: .
+  docs: docs
+  test: None
+  source: minchin
+  changelog: CHANGELOG.rst
+  version: minchin\pelican\plugins\static_comments\__init__.py
+  version_bump: None
+  extra_packages:
+    test:
+      - Pillow
