@@ -2,7 +2,27 @@ Pelican Static Comment System
 =============================
 
 Pelican Static Comment System allows you to add static comments to your
-articles. 
+articles.
+
+.. image:: https://img.shields.io/pypi/v/minchin.pelican.plugins.static-comments.svg?style=flat
+    :target: https://pypi.python.org/pypi/minchin.pelican.plugins.static-comments/
+    :alt: PyPI version number
+
+.. image:: https://img.shields.io/badge/-Changelog-success
+   :target: https://github.com/MinchinWeb/minchin.pelican.plugins.static-comments/blob/master/CHANGELOG.rst
+   :alt: Changelog
+
+.. image:: https://img.shields.io/pypi/pyversions/minchin.pelican.plugins.static-comments?style=flat
+    :target: https://pypi.python.org/pypi/minchin.pelican.plugins.static-comments/
+    :alt: Supported Python version
+
+.. image:: https://img.shields.io/pypi/l/minchin.pelican.plugins.static-comments.svg?style=flat&color=green
+    :target: https://github.com/MinchinWeb/minchin.pelican.plugins.static-comments/blob/master/LICENSE.txt
+    :alt: License
+
+.. image:: https://img.shields.io/pypi/dm/minchin.pelican.plugins.static-comments.svg?style=flat
+    :target: https://pypi.python.org/pypi/minchin.pelican.plugins.static-comments/
+    :alt: Download Count
 
 Comments are received via email (i.e. you don't need to maintain a server to
 receive comments). Comments are stored in files in formats that can be
