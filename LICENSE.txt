@@ -5,7 +5,8 @@ Copyright 2014-17 Bernhard Scheirle.
 Copyright 2017, 2021-22 William Minchin.
 All rights reserved.
 
-pelican_comment_system is free software: you can redistribute it and/or modify
+pelican_comment_system, aka minchin.pelican.plugins.static_comments, is free
+software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.

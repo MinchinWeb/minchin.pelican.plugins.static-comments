@@ -8,19 +8,41 @@ This project adheres to `Semantic Versioning <http://semver.org/>`__.
 ------------------
 \
 
+Fixed
+~~~~~
+
+- the `replyto` field now takes the whole filename, rather than "eating" the
+  dot in filenames. E.g. old: `replyto: 1md`; new: `replyto: 1.md`. **You will
+  need to update any comments that contain this field.** If you don't update, a
+  warning will appear when you generate your site.
+
+Added
+~~~~~
+
+- automatically activates on Pelican 4.5+. If automatic loading isn't working,
+  refer to the installation instructions for my `autoloader
+  <https://github.com/MinchinWeb/minchin.pelican.plugins.autoloader>`__ plugin.
+- Blogger comment exporter script is now available on the commandline as
+  `blogger-comment-export`
+
 Changes
 ~~~~~~~
 
 - move GitHub repo to `MinchinWeb/minchin.pelican.plugins.static-comments
-  https://github.com/MinchinWeb/minchin.pelican.plugins.static-comments`
-- 
+  <https://github.com/MinchinWeb/minchin.pelican.plugins.static-comments>`__
+- plugin name, as listed in `PLUGINS` in `pelicanconf.py`, is now
+  `minchin.pelican.plugin.static_comments`. Generally, though, the entry can be
+  completely removed and instead rely on the auto-loading of plugins provided
+  by Pelican 4.5+.
 
 Unresolved
 ~~~~~~~~~~
 
-- .
+- documentation may (in places) still need to be updated
+- packaging relies on `invoke`, which doesn't yet support Python 3.10. The
+  plugin should, however, support Python 3.10+.
 
-1.4.0 – 2017-02-20
+1.4.0 - 2017-02-20
 ------------------
 \
 
@@ -30,7 +52,7 @@ Added
 -  add ``setup.py`` to allow posting plugin to PyPI `PR
    #862 <https://github.com/getpelican/pelican-plugins/pull/862>`__
 
-1.3.0 – 2017-01-10
+1.3.0 - 2017-01-10
 ------------------
 \
 
@@ -43,7 +65,7 @@ Added
    documentation <docs/import.md>`__ `PR
    #835 <https://github.com/getpelican/pelican-plugins/pull/835>`__
 
-1.2.2 – 2016-12-19
+1.2.2 - 2016-12-19
 ------------------
 \
 
@@ -53,7 +75,7 @@ Fixed
 -  Correct jQuery expression in cancelReply method `PR
    #820 <https://github.com/getpelican/pelican-plugins/pull/820>`__
 
-1.2.1 – 2016-09-22
+1.2.1 - 2016-09-22
 ------------------
 \
 
@@ -65,7 +87,7 @@ Fixed
    `Fixes
    pelican#1949 <https://github.com/getpelican/pelican/issues/1949>`__
 
-1.2.0 – 2016-05-23
+1.2.0 - 2016-05-23
 ------------------
 \
 
@@ -95,11 +117,11 @@ Added
 -  Logs a warning if the parent of a comment can not be found `PR
    #715 <https://github.com/getpelican/pelican-plugins/pull/715>`__
 
-1.1.0 – 2016-02-18
+1.1.0 - 2016-02-18
 ------------------
 \
 
-Fixed – Documentation
+Fixed - Documentation
 ~~~~~~~~~~~~~~~~~~~~~
 
 -  Updated old URLs `PR
@@ -115,17 +137,17 @@ Changed
    pelican writer plugin) `PR
    #677 <https://github.com/getpelican/pelican-plugins/pull/677>`__
 
-1.0.1 – 2015-10-04
+1.0.1 - 2015-10-04
 ------------------
 \
 
-Fixed – Documentation
+Fixed - Documentation
 ~~~~~~~~~~~~~~~~~~~~~
 
 -  Add commas indicating tuple (``PELICAN_COMMENT_SYSTEM_AUTHORS``) `PR
    #579 <https://github.com/getpelican/pelican-plugins/pull/579>`__
 
-1.0.0 – 2014-11-05
+1.0.0 - 2014-11-05
 ------------------
 \
 

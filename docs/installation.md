@@ -11,8 +11,8 @@ need to add the auto-loader to your list of plugins:
 # pelicanconf.py
 
 PLUGINS = [
-	  # others
-		"minchin.pelican.plugins.autoloader",
+    # others
+    "minchin.pelican.plugins.autoloader",
 ]
 ```
 

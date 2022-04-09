@@ -5,7 +5,7 @@ Pelican Static Comment System
 
 A Pelican plugin, which allows you to add static comments to your articles.
 
-Author: Bernhard Scheirle
+Creator: Bernhard Scheirle
 Maintainer: William Minchin
 """
 from __future__ import unicode_literals

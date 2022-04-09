@@ -62,7 +62,8 @@ Instructions
 
 PyPi
 ------------
-The Pelican Comment System is now also in the Python Package Index and can easily installed via:
+The Pelican Comment System is now also in the Python Package Index and can
+easily installed via:
 
 ::
 
@@ -74,9 +75,9 @@ Requirements
 
 Pelican 3.4 or newer is required.
 
-To create identicons, the Python Image Library is needed. Therefore you
-either need PIL **or** Pillow (recommended). If you install the plugin from
-pip, Pillow will automatically be installed.
+To create identicons, the Python Image Library is needed. Therefore you either
+need PIL **or** Pillow (recommended). If you install the plugin from pip,
+Pillow will automatically be installed.
 
 **Install Pillow manually via:**
 
@@ -85,8 +86,8 @@ pip, Pillow will automatically be installed.
     pip install Pillow
 
 If you don't want avatars or identicons, this plugin works fine without
-PIL/Pillow. You will, however, see a warning that identicons are
-deactivated (as expected).
+PIL/Pillow. You will, however, see a warning that identicons are deactivated
+(as expected).
 
 Change Log
 ----------
