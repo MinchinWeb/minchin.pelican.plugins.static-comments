@@ -10,3 +10,5 @@ releaser:
   extra_packages:
     test:
       - Pillow
+      - pelican
+      - minchin.pelican.plugins.autoloader
