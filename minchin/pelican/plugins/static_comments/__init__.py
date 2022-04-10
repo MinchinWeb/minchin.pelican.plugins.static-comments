@@ -35,6 +35,8 @@ __url__ = "https://github.com/MinchinWeb/minchin.pelican.plugins.static-comments
 __license__ = "GPLv3+"
 # fmt: on
 
+LOG_PREFIX = "[Static Comments]"
+
 _all_comments = []
 _pelican_writer = None
 _pelican_obj = None
@@ -120,9 +122,9 @@ def warn_on_slug_collision(items):
     for slug, itemList in slugs.items():
         len_ = len(itemList)
         if len_ > 1:
-            logger.warning("There are %s comments with the same slug: %s", len_, slug)
+            logger.warning("%s There are %s comments with the same slug: %s" % (LOG_PREFIX, len_, slug))
             for x in itemList:
-                logger.warning("    %s", x.source_path)
+                logger.warning("%s    %s" % (LOG_PREFIX, x.source_path))
 
 
 def write_feed_all(gen, writer):
@@ -187,7 +189,7 @@ def add_static_comments(gen, content):
     )
 
     if not os.path.isdir(folder):
-        logger.debug("No comments found for: %s", content.slug)
+        logger.debug("%s No comments found for: %s" % (LOG_PREFIX, content.slug))
         write_feed(gen, [], context, content.slug)
         return
 
@@ -226,12 +228,12 @@ def add_static_comments(gen, content):
                 break
         if not found_parent:
             logger.warning(
-                'Comment "%s/%s" is a reply to non-existent '
+                '%s Comment "%s/%s" is a reply to non-existent '
                 'comment "%s". Make sure the replyto attribute is '
-                "set correctly.",
-                content.slug,
+                "set correctly." % 
+                (LOG_PREFIX, content.slug,
                 reply.slug,
-                reply.replyto,
+                reply.replyto)
             )
 
     count = 0
@@ -254,7 +256,7 @@ def pelican_finalized(pelican):
     if pelican.settings["PELICAN_COMMENT_SYSTEM"] is not True:
         return
     global _all_comments
-    print("Processed %s comment(s)" % len(_all_comments))
+    print("%s Processed %s comment(s)." % (LOG_PREFIX, len(_all_comments)))
 
 
 def register():
