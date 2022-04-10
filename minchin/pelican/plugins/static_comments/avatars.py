@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 _log = "pelican_comment_system: avatars: "
 try:
     from .identicon import identicon
+
     _identiconImported = True
 except ImportError as e:
     logger.warning(_log + "identicon deactivated: " + str(e))
@@ -36,8 +37,9 @@ def _ready():
     return _identiconImported and _initialized and _identicon_data
 
 
-def init(pelican_output_path, identicon_output_path, identicon_data,
-         identicon_size, authors):
+def init(
+    pelican_output_path, identicon_output_path, identicon_data, identicon_size, authors
+):
     global _identicon_save_path
     global _identicon_output_path
     global _identicon_data
@@ -46,8 +48,7 @@ def init(pelican_output_path, identicon_output_path, identicon_data,
     global _authors
     global _missingAvatars
 
-    _identicon_save_path = os.path.join(pelican_output_path,
-                                        identicon_output_path)
+    _identicon_save_path = os.path.join(pelican_output_path, identicon_output_path)
     _identicon_output_path = identicon_output_path
     _identicon_data = identicon_data
     _identicon_size = identicon_size
@@ -66,18 +67,17 @@ def _createIdenticonOutputFolder():
 
 def getAvatarPath(comment_id, metadata):
     if not _ready():
-        return ''
+        return ""
 
     md5 = hashlib.md5()
     author = tuple()
     for data in _identicon_data:
         if data in metadata:
             string = "{}".format(metadata[data])
-            md5.update(string.encode('utf-8'))
+            md5.update(string.encode("utf-8"))
             author += tuple([string])
         else:
-            logger.warning(_log + data +
-                           " is missing in comment: " + comment_id)
+            logger.warning(_log + data + " is missing in comment: " + comment_id)
 
     if author in _authors:
         return _authors[author]
@@ -89,15 +89,15 @@ def getAvatarPath(comment_id, metadata):
     if code not in _missingAvatars:
         _missingAvatars.append(code)
 
-    return os.path.join(_identicon_output_path, '%s.png' % code)
+    return os.path.join(_identicon_output_path, "%s.png" % code)
 
 
 def generateAndSaveMissingAvatars():
     _createIdenticonOutputFolder()
     global _missingAvatars
     for code in _missingAvatars:
-        avatar_path = '%s.png' % code
+        avatar_path = "%s.png" % code
         avatar = identicon.render_identicon(int(code, 16), _identicon_size)
         avatar_save_path = os.path.join(_identicon_save_path, avatar_path)
-        avatar.save(avatar_save_path, 'PNG')
+        avatar.save(avatar_save_path, "PNG")
     _missingAvatars = []

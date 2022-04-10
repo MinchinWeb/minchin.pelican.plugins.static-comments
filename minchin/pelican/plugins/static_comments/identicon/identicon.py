@@ -21,28 +21,28 @@ Return a PIL Image class instance which have generated identicon image.
 # PIL Modules
 from PIL import Image, ImageColor, ImageDraw, ImagePath
 
-__all__ = ['render_identicon', 'IdenticonRendererBase']
+__all__ = ["render_identicon", "IdenticonRendererBase"]
 
 
 class Matrix2D(list):
 
     """Matrix for Patch rotation"""
 
-    def __init__(self, initial=[0.] * 9):
+    def __init__(self, initial=[0.0] * 9):
         assert isinstance(initial, list) and len(initial) == 9
         list.__init__(self, initial)
 
     def clear(self):
         for i in xrange(9):
-            self[i] = 0.
+            self[i] = 0.0
 
     def set_identity(self):
         self.clear()
         for i in xrange(3):
-            self[i] = 1.
+            self[i] = 1.0
 
     def __str__(self):
-        return '[%s]' % ', '.join('%3.2f' % v for v in self)
+        return "[%s]" % ", ".join("%3.2f" % v for v in self)
 
     def __mul__(self, other):
         r = []
@@ -51,7 +51,7 @@ class Matrix2D(list):
                 for x in range(3):
                     v = 0.0
                     for i in range(3):
-                        v += (self[i * 3 + x] * other[y * 3 + i])
+                        v += self[i * 3 + x] * other[y * 3 + i]
                     r.append(v)
         else:
             raise NotImplementedError
@@ -92,11 +92,10 @@ class Matrix2D(list):
         c = [1., 0., -1., 0.][theta]
         s = [0., 1., 0., -1.][theta]
 
-        matR = kls([c, -s, 0., s, c, 0., 0., 0., 1.])
+        matR = kls([c, -s, 0.0, s, c, 0.0, 0.0, 0.0, 1.0])
         if not pivot:
             return matR
-        return kls.translate(-pivot[0], -pivot[1]) * matR * \
-            kls.translate(*pivot)
+        return kls.translate(-pivot[0], -pivot[1]) * matR * kls.translate(*pivot)
 
 
 class IdenticonRendererBase(object):
@@ -129,29 +128,29 @@ class IdenticonRendererBase(object):
         draw.rectangle((0, 0, image.size[0], image.size[1]), fill=0)
 
         kwds = {
-            'draw': draw,
-            'size': size,
-            'foreColor': foreColor,
-            'backColor': backColor}
+            "draw": draw,
+            "size": size,
+            "foreColor": foreColor,
+            "backColor": backColor,
+        }
         # middle patch
         self.drawPatch((1, 1), middle[2], middle[1], middle[0], **kwds)
 
         # side patch
-        kwds['type'] = side[0]
+        kwds["type"] = side[0]
         for i in range(4):
             pos = [(1, 0), (2, 1), (1, 2), (0, 1)][i]
             self.drawPatch(pos, side[2] + 1 + i, side[1], **kwds)
 
         # corner patch
-        kwds['type'] = corner[0]
+        kwds["type"] = corner[0]
         for i in range(4):
             pos = [(0, 0), (2, 0), (2, 2), (0, 2)][i]
             self.drawPatch(pos, corner[2] + 1 + i, corner[1], **kwds)
 
         return image
 
-    def drawPatch(self, pos, turn, invert, type, draw, size, foreColor,
-                  backColor):
+    def drawPatch(self, pos, turn, invert, type, draw, size, foreColor, backColor):
         """
         @param size patch size
         """
@@ -159,18 +158,22 @@ class IdenticonRendererBase(object):
         if not path:
             # blank patch
             invert = not invert
-            path = [(0., 0.), (1., 0.), (1., 1.), (0., 1.), (0., 0.)]
+            path = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0), (0.0, 0.0)]
         patch = ImagePath.Path(path)
         if invert:
             foreColor, backColor = backColor, foreColor
 
-        mat = Matrix2D.rotateSquare(turn, pivot=(0.5, 0.5)) *\
-            Matrix2D.translate(*pos) *\
-            Matrix2D.scale(size, size)
+        mat = (
+            Matrix2D.rotateSquare(turn, pivot=(0.5, 0.5))
+            * Matrix2D.translate(*pos)
+            * Matrix2D.scale(size, size)
+        )
 
         patch.transform(mat.for_PIL())
-        draw.rectangle((pos[0] * size, pos[1] * size, (pos[0] + 1) * size,
-                        (pos[1] + 1) * size), fill=backColor)
+        draw.rectangle(
+            (pos[0] * size, pos[1] * size, (pos[0] + 1) * size, (pos[1] + 1) * size),
+            fill=backColor,
+        )
         draw.polygon(patch, fill=foreColor, outline=foreColor)
 
     # virtual functions
@@ -227,10 +230,13 @@ class DonRenderer(IdenticonRendererBase):
 
         foreColor = (red << 3, green << 3, blue << 3)
 
-        return (middleType, middleInvert, 0),\
-               (cornerType, cornerInvert, cornerTurn),\
-               (sideType, sideInvert, sideTurn),\
-            foreColor, ImageColor.getrgb('white')
+        return (
+            (middleType, middleInvert, 0),
+            (cornerType, cornerInvert, cornerTurn),
+            (sideType, sideInvert, sideTurn),
+            foreColor,
+            ImageColor.getrgb("white"),
+        )
 
 
 def render_identicon(code, size, renderer=None):
@@ -239,20 +245,20 @@ def render_identicon(code, size, renderer=None):
     return renderer(code).render(size)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 2:
-        print('usage: python identicon.py [CODE]....')
+        print("usage: python identicon.py [CODE]....")
         raise SystemExit
 
     for code in sys.argv[1:]:
-        if code.startswith('0x') or code.startswith('0X'):
+        if code.startswith("0x") or code.startswith("0X"):
             code = int(code[2:], 16)
-        elif code.startswith('0'):
+        elif code.startswith("0"):
             code = int(code[1:], 8)
         else:
             code = int(code)
 
         icon = render_identicon(code, 24)
-        icon.save('%08x.png' % code, 'PNG')
+        icon.save("%08x.png" % code, "PNG")

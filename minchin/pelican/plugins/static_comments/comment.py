@@ -13,33 +13,32 @@ from . import avatars
 
 
 class Comment(Content):
-    mandatory_properties = ('author', 'date')
-    default_template = 'None'
+    mandatory_properties = ("author", "date")
+    default_template = "None"
 
-    allowed_statuses = ('published'),
-    default_status = 'published'
+    allowed_statuses = (("published"),)
+    default_status = "published"
     article = None
 
     def __init__(self, content, metadata, settings, source_path, context):
         # Strip the path off the full filename.
         name = os.path.split(source_path)[1]
 
-        if not hasattr(self, 'slug'):
+        if not hasattr(self, "slug"):
             # compute the slug before initializing the base Content object, so
             # it doesn't get set there
             # This is required because we need a slug containing the file
             # extension.
-            self.slug = slugify(name, settings.get('SLUG_SUBSTITUTIONS', ()))
+            self.slug = slugify(name, settings.get("SLUG_SUBSTITUTIONS", ()))
 
-        super(Comment, self).__init__(content, metadata, settings, source_path,
-                                      context)
+        super(Comment, self).__init__(content, metadata, settings, source_path, context)
 
         self.replies = []
 
         # Strip the extension from the filename.
         name = os.path.splitext(name)[0]
         self.avatar = avatars.getAvatarPath(name, metadata)
-        self.title = "Posted by:  {}".format(metadata['author'])
+        self.title = "Posted by:  {}".format(metadata["author"])
 
     def addReply(self, comment):
         self.replies.append(comment)
