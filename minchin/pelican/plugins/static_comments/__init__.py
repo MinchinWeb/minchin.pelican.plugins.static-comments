@@ -256,7 +256,7 @@ def pelican_finalized(pelican):
     if pelican.settings["PELICAN_COMMENT_SYSTEM"] is not True:
         return
     global _all_comments
-    print("%s Processed %s comment(s)." % (LOG_PREFIX, len(_all_comments)))
+    print("%s Processed %s comment%s." % (LOG_PREFIX, len(_all_comments), 's' if len(_all_comments) != 1 else ''))
 
 
 def register():
