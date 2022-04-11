@@ -4,7 +4,7 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`__.
 
-2.0.1 - Unreleased
+2.1.0 - 2022-04-10
 ------------------
 \
 
@@ -56,8 +56,7 @@ Unresolved
 ~~~~~~~~~~
 
 - documentation may (in places) still need to be updated
-- packaging relies on `invoke`, which doesn't yet support Python 3.10. The
-  plugin should, however, support Python 3.10+.
+
 
 1.4.0 - 2017-02-20
 ------------------

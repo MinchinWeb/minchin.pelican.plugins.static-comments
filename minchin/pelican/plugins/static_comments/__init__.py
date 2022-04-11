@@ -26,12 +26,12 @@ from . import avatars
 from .comment import Comment
 
 # fmt: off
-__version__ = "2.0.1-dev"
+__version__ = "2.1.0"
 __title__ = "minchin.pelican.plugins.static-comments"
 __description__ = "A Pelican plugin, which allows you to add static comments to your articles."
 __author__ = "William Minchin"
 __email__ = "w_minchin@hotmail.com"
-__url__ = "https://github.com/MinchinWeb/minchin.pelican.plugins.static-comments"
+__url__ = "https://github.com/MinchinWeb/minchin.pelican.plugins.static_comments"
 __license__ = "GPLv3+"
 # fmt: on
 
