@@ -8,6 +8,13 @@ This project adheres to `Semantic Versioning <http://semver.org/>`__.
 ------------------
 \
 
+Fixed
+~~~~~
+
+- generating slugs should now work across Pelican 3.7, 4.0-4.2, and 4.5+. The
+  slugs should also match "old" versions (pre 2.0.0) of the plugin as well. Use
+  the form `replyto: 1md` (no period for file extension start).
+
 Added
 ~~~~~
 
@@ -20,10 +27,11 @@ Added
 Fixed
 ~~~~~
 
-- the `replyto` field now takes the whole filename, rather than "eating" the
-  dot in filenames. E.g. old: `replyto: 1md`; new: `replyto: 1.md`. **You will
-  need to update any comments that contain this field.** If you don't update, a
-  warning will appear when you generate your site.
+- [**This is no longer the case with v2.1.0**.] the `replyto` field now takes the
+  whole filename, rather than "eating" the dot in filenames. E.g. old:
+  `replyto: 1md`; new: `replyto: 1.md`. You will need to update any comments
+  that contain this field. If you don't update, a warning will appear when
+  you generate your site.
 
 Added
 ~~~~~

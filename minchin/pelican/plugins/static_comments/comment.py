@@ -29,7 +29,27 @@ class Comment(Content):
             # it doesn't get set there
             # This is required because we need a slug containing the file
             # extension.
-            self.slug = slugify(name, settings.get("SLUG_SUBSTITUTIONS", ()))
+            try:
+                # Pelican 4.5.0
+                self.slug = slugify(
+                    name,
+                    regex_subs=settings.get('SLUG_REGEX_SUBSTITUTIONS', []),
+                    preserve_case=settings.get('SLUGIFY_PRESERVE_CASE', False),
+                    use_unicode=settings.get('SLUGIFY_USE_UNICODE', False),
+                )
+            except TypeError:
+                try:
+                    # Pelican 4.0 to 4.2
+                    self.slug = slugify(
+                    name,
+                    regex_subs=settings.get('SLUG_REGEX_SUBSTITUTIONS', []),
+                )
+                except TypeError:
+                    # Pelican 3.7
+                    self.slug = slugify(
+                        name,
+                        settings.get("SLUG_SUBSTITUTIONS", ()),
+                    )
 
         super(Comment, self).__init__(content, metadata, settings, source_path, context)
 
