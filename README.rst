@@ -53,12 +53,12 @@ See it in action here:
 Instructions
 ------------
 
--  `Quickstart Guide <doc/quickstart.md>`__
--  `Installation and basic usage <doc/installation.md>`__
--  `Import existing comments <doc/import.md>`__
--  `Avatars and identicons <doc/avatars.md>`__
--  `Comment Atom feed <doc/feed.md>`__
--  `[Developer] How to do a release <doc/how-to-release.md>`__
+-  `Quickstart Guide <docs/quickstart.md>`__
+-  `Installation and basic usage <docs/installation.md>`__
+-  `Import existing comments <docs/import.md>`__
+-  `Avatars and identicons <docs/avatars.md>`__
+-  `Comment Atom feed <docs/feed.md>`__
+-  `[Developer] How to do a release <docs/how-to-release.md>`__
 
 PyPi
 ------------

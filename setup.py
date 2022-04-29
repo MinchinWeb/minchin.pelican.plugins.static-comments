@@ -38,8 +38,8 @@ SHORT_DESC   = find_meta(*META_PATH, meta_key='description')
 LONG_DESC    = "\n\n".join(
     [
         read('README.rst')
-        .replace("<docs/", "<" + URL + "/doc/")
-        .replace("<./", "<" + URL + "/"),
+        .replace("<docs/", "<" + URL + "/blob/master/docs/")
+        .replace("<./", "<" + URL + "/blob/master/"),
         read('CHANGELOG.rst'),
     ]
 )
