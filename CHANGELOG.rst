@@ -4,6 +4,16 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`__.
 
+2.1.1 - 2022-04-29
+------------------
+\
+
+Fixed
+~~~~~
+
+- Readme link targets
+
+
 2.1.0 - 2022-04-10
 ------------------
 \
