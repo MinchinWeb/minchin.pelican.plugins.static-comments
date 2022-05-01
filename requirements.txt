@@ -16,7 +16,7 @@ jinja2==3.1.1
     # via pelican
 markupsafe==2.1.1
     # via jinja2
-minchin-pelican-plugins-autoloader==1.0.3
+minchin-pelican-plugins-autoloader==1.1.0
     # via minchin.pelican.plugins.static-comments (setup.py)
 pelican==4.7.2
     # via
