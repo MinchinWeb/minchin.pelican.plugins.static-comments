@@ -22,7 +22,7 @@ pelican==4.7.2
     # via
     #   minchin-pelican-plugins-autoloader
     #   minchin.pelican.plugins.static-comments (setup.py)
-pillow==9.1.0
+pillow==9.4.0
     # via minchin.pelican.plugins.static-comments (setup.py)
 pygments==2.11.2
     # via
