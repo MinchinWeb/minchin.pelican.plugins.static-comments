@@ -26,7 +26,7 @@ from . import avatars
 from .comment import Comment
 
 # fmt: off
-__version__ = "2.1.2"
+__version__ = "2.1.3-dev"
 __title__ = "minchin.pelican.plugins.static-comments"
 __description__ = "A Pelican plugin, which allows you to add static comments to your articles."
 __author__ = "William Minchin"
