@@ -33,17 +33,17 @@ class Comment(Content):
                 # Pelican 4.5.0
                 self.slug = slugify(
                     name,
-                    regex_subs=settings.get('SLUG_REGEX_SUBSTITUTIONS', []),
-                    preserve_case=settings.get('SLUGIFY_PRESERVE_CASE', False),
-                    use_unicode=settings.get('SLUGIFY_USE_UNICODE', False),
+                    regex_subs=settings.get("SLUG_REGEX_SUBSTITUTIONS", []),
+                    preserve_case=settings.get("SLUGIFY_PRESERVE_CASE", False),
+                    use_unicode=settings.get("SLUGIFY_USE_UNICODE", False),
                 )
             except TypeError:
                 try:
                     # Pelican 4.0 to 4.2
                     self.slug = slugify(
-                    name,
-                    regex_subs=settings.get('SLUG_REGEX_SUBSTITUTIONS', []),
-                )
+                        name,
+                        regex_subs=settings.get("SLUG_REGEX_SUBSTITUTIONS", []),
+                    )
                 except TypeError:
                     # Pelican 3.7
                     self.slug = slugify(

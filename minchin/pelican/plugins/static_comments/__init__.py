@@ -122,7 +122,10 @@ def warn_on_slug_collision(items):
     for slug, itemList in slugs.items():
         len_ = len(itemList)
         if len_ > 1:
-            logger.warning("%s There are %s comments with the same slug: %s" % (LOG_PREFIX, len_, slug))
+            logger.warning(
+                "%s There are %s comments with the same slug: %s"
+                % (LOG_PREFIX, len_, slug)
+            )
             for x in itemList:
                 logger.warning("%s    %s" % (LOG_PREFIX, x.source_path))
 
@@ -230,10 +233,7 @@ def add_static_comments(gen, content):
             logger.warning(
                 '%s Comment "%s/%s" is a reply to non-existent '
                 'comment "%s". Make sure the replyto attribute is '
-                "set correctly." % 
-                (LOG_PREFIX, content.slug,
-                reply.slug,
-                reply.replyto)
+                "set correctly." % (LOG_PREFIX, content.slug, reply.slug, reply.replyto)
             )
 
     count = 0
@@ -256,7 +256,10 @@ def pelican_finalized(pelican):
     if pelican.settings["PELICAN_COMMENT_SYSTEM"] is not True:
         return
     global _all_comments
-    print("%s Processed %s comment%s." % (LOG_PREFIX, len(_all_comments), 's' if len(_all_comments) != 1 else ''))
+    print(
+        "%s Processed %s comment%s."
+        % (LOG_PREFIX, len(_all_comments), "s" if len(_all_comments) != 1 else "")
+    )
 
 
 def register():
