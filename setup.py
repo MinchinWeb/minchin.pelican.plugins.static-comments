@@ -58,7 +58,7 @@ PACKAGES = setuptools.find_namespace_packages(include=["minchin.*"])
 # ]
 
 INSTALL_REQUIRES = [
-    "minchin.pelican.plugins.autoloader",
+    "minchin.pelican.plugins.autoloader != 1.2.0",
     "pelican >= 3.4",
     "pillow",
 ]
