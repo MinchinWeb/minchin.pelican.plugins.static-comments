@@ -4,6 +4,16 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`__.
 
+2.1.2 - 2023-08-09
+------------------
+\
+
+Support
+~~~~~~~
+
+- blacklist ``autoloader`` v1.2.0
+
+
 2.1.1 - 2022-04-29
 ------------------
 \

@@ -11,4 +11,6 @@ releaser:
     test:
       - Pillow
       - pelican
-      - minchin.pelican.plugins.autoloader
+      - semantic-version
+      - setuptools
+      - wheel
